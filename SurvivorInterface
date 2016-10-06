@@ -1,0 +1,4 @@
+public interface SurvivorInterface extends PlayerInterface{
+// survivors can attack zombies to decrease their hp
+public void attack(ZombieInterface);
+}

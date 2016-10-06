@@ -1,0 +1,4 @@
+public interface ZombieInterface extends PlayerInterface{
+// zombies can attack survivors because they are mean :(
+public void attack(SurvivorInterface);
+}

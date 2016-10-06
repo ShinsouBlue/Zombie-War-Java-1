@@ -1,0 +1,6 @@
+public interface PlayerInterface {
+// players can lose health
+public void loseHP(int healthLost);
+// players can die
+public boolean isDead();
+}

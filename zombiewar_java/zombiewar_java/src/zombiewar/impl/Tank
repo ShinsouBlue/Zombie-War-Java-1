@@ -1,4 +1,6 @@
-package zombiewar;
+package zombiewar.impl;
+
+import zombiewar.intf.ICharacter;
 
 public class Tank extends Character implements IZombie {
 

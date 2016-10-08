@@ -22,7 +22,6 @@ public class Main {
       switch(zombieType){
         case 0: zombies[i] = (IZombie) factory.make("common"); break;
         case 1: zombies[i] = (IZombie) factory.make("tank"); break;
-        case 2: zombies[i] = (IZombie) factory.make("predator"); break;
       }
     }
     return zombies;
@@ -36,8 +35,7 @@ public class Main {
       switch(type){
         case 0: survivors[i] = (ISurvivor) factory.make("solider"); break;
         case 1: survivors[i] = (ISurvivor) factory.make("teacher"); break;
-        case 2: survivors[i] = (ISurvivor) factory.make("student"); break;
-        case 3: survivors[i] = (ISurvivor) factory.make("child"); break;
+        case 2: survivors[i] = (ISurvivor) factory.make("child"); break;
       }
     }
     return survivors;

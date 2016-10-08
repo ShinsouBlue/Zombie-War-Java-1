@@ -1,0 +1,23 @@
+package zombiewar;
+
+public class Tank extends Character implements IZombie {
+
+	Tank(int health) {
+		super(health);
+	}
+
+	public void decreaseHealth(int increment) {
+		health-=increment;
+		
+	}
+
+	public boolean isAlive() {
+		return (health > 0);
+	}
+
+	public void attack(ISurvivor survivor) {
+		survivor.decreaseHealth(20);
+		
+	}
+
+}

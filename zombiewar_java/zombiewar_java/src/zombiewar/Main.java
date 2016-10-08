@@ -48,6 +48,20 @@ public class Main {
     }
     return allDead;
   }
+  
+   public static void attackAllZombies(ISurvivor s, IZombie[] zombies){
+	  for (int i=0;i<zombies.length;i++){
+		  IZombie z = zombies[i];
+		  s.attack(z);
+	  }
+  }
+  
+  public static void attackAllSurvivors(IZombie z, ISurvivor[] survivors){
+	  for (int i=0;i<survivors.length;i++){
+		  ISurvivor s = survivors[i];
+		  z.attack(s);
+	  }
+  }
 
   /**
    * @param args the command line arguments
@@ -65,7 +79,27 @@ public class Main {
     //      turn to attack.  For each zombie that is still alive, attack
     //      each suvivor that is still alive.  Repeat this cycle until
     //      all the zombies are all dead or all the survivors are all dead.
-    
+    boolean battle=true;
+    while (battle=true){
+    	if (allDead(survivors) || allDead(zombies)){
+    		battle=false;
+    		break;
+    	}
+    	 
+    	for (int i=0;i<survivors.length;i++){
+    	    	ISurvivor s = (ISurvivor) survivors[i];
+    	    	if (s.isAlive()){
+    	    		attackAllZombies(s,zombies);
+    	    	}
+    	}
+    	
+    	for (int i=0;i<zombies.length;i++){
+	    	IZombie z = (IZombie) zombies[i];
+	    	if (z.isAlive()){
+	    		attackAllSurvivors(z,survivors);
+	    	}
+	}
+    }
 
     
 

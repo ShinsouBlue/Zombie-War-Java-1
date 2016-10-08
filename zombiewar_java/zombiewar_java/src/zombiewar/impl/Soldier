@@ -1,6 +1,6 @@
 package zombiewar.impl;
 
-
+import zombiewar.intf.ICharacter;
 
 public class Soldier extends Character implements ISurvivor {
 

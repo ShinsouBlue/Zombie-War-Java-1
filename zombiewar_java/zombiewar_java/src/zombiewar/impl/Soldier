@@ -1,0 +1,16 @@
+package zombiewar.impl;
+
+
+
+public class Soldier extends Character implements ISurvivor {
+
+	Soldier(int health) {
+		super(health);
+	}
+
+	public void attack(IZombie zombie) {
+		zombie.decreaseHealth(10);
+		
+	}
+
+}

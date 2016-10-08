@@ -1,0 +1,14 @@
+package zombiewar.impl;
+
+public class Common extends Character implements IZombie {
+
+	Common(int health) {
+		super(health);
+	}
+	
+	public void attack(ISurvivor survivor) {
+		survivor.decreaseHealth(5);
+		
+	}
+
+}

@@ -52,14 +52,14 @@ public class Main {
    public static void attackAllZombies(ISurvivor s, IZombie[] zombies){
 	  for (int i=0;i<zombies.length;i++){
 		  IZombie z = zombies[i];
-		  s.attack(z);
+		  if (z.isAlive()) s.attack(z);
 	  }
   }
   
   public static void attackAllSurvivors(IZombie z, ISurvivor[] survivors){
 	  for (int i=0;i<survivors.length;i++){
 		  ISurvivor s = survivors[i];
-		  z.attack(s);
+		  if (s.isAlive()) z.attack(s);
 	  }
   }
 

@@ -11,7 +11,6 @@ public class Common extends Character implements IZombie {
 	
 	public void attack(ISurvivor survivor) {
 		survivor.decreaseHealth(5);
-		
 	}
 
 }

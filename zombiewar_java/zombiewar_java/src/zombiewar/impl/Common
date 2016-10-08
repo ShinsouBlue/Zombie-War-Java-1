@@ -1,6 +1,7 @@
 package zombiewar.impl;
 
-import zombiewar.intf.ICharacter;
+import zombiewar.intf.ISurvivor;
+import zombiewar.intf.IZombie;
 
 public class Common extends Character implements IZombie {
 

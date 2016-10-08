@@ -1,5 +1,7 @@
 package zombiewar.impl;
 
+import zombiewar.intf.ICharacter;
+
 public class Teacher extends Character implements ISurvivor{
 
 	Teacher(int health) {

@@ -60,6 +60,8 @@ public class Main {
 	  for (int i=0;i<survivors.length;i++){
 		  ISurvivor s = survivors[i];
 		  if (s.isAlive()) z.attack(s);
+                  
+                  //if(!s.isAlive()) System.out.println()
 	  }
   }
 
@@ -70,9 +72,26 @@ public class Main {
 
     IZombie[] zombies = randomZombies();
     ISurvivor[] survivors = randomSurvivors();
+    
+    int commonZombieCount = 0;
+    int tankZombieCount = 0;
+    for(int i = 0; i < zombies.length; i++){
+        if(zombies[i].getClass().getName().toLowerCase().contains("common")) commonZombieCount++;
+        if(zombies[i].getClass().getName().toLowerCase().contains("tank")) tankZombieCount++;
+    }
+    
+    int childCharacterCount = 0;
+    int soldierCharacterCount = 0;
+    int teacherCharacterCount = 0;
+    for(int i = 0; i < survivors.length; i++){
+        if(survivors[i].getClass().getName().toLowerCase().contains("child")) childCharacterCount++;
+        if(survivors[i].getClass().getName().toLowerCase().contains("soldier")) soldierCharacterCount++;
+        if(survivors[i].getClass().getName().toLowerCase().contains("teacher")) teacherCharacterCount++;
+    }
+    
 
-    System.out.println("We have " + survivors.length + " survivors trying to make it to safety.");
-    System.out.println("But there are " + zombies.length + " zombies waiting for them.");
+    System.out.println("We have " + survivors.length + " survivors trying to make it to safety. (" + childCharacterCount + " Children, " + soldierCharacterCount + " Soldiers, " + teacherCharacterCount + " Teachers)");
+    System.out.println("But there are " + zombies.length + " zombies waiting for them.(" + commonZombieCount + " Common Infected, " + tankZombieCount + " Tanks)");
     
     //TODO: the survivors attack first.  One characte attack each zombie.
     //      When all the survivors have done attacking, it's the zombies' 

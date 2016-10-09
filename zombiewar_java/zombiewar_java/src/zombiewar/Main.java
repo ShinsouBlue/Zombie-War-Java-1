@@ -60,8 +60,6 @@ public class Main {
 	  for (int i=0;i<survivors.length;i++){
 		  ISurvivor s = survivors[i];
 		  if (s.isAlive()) z.attack(s);
-                  
-                  //if(!s.isAlive()) System.out.println()
 	  }
   }
 

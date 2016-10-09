@@ -1,6 +1,7 @@
 package zombiewar;
 
 import zombiewar.impl.CharacterFactory;
+import zombiewar.impl.Child;
 import zombiewar.intf.ICharacter;
 import zombiewar.intf.ICharacterFactory;
 import zombiewar.intf.ISurvivor;
@@ -51,15 +52,29 @@ public class Main {
   
    public static void attackAllZombies(ISurvivor s, IZombie[] zombies){
 	  for (int i=0;i<zombies.length;i++){
+                  boolean attacked=false;
 		  IZombie z = zombies[i];
-		  if (z.isAlive()) s.attack(z);
+		  if (z.isAlive()){
+                      s.attack(z);
+                      attacked=true;
+                  }
+                  if(!z.isAlive() && attacked){
+                      System.out.println(s.getName()+" killed "+ z.getName());
+                  }
 	  }
   }
   
   public static void attackAllSurvivors(IZombie z, ISurvivor[] survivors){
 	  for (int i=0;i<survivors.length;i++){
+                  boolean attacked=false;
 		  ISurvivor s = survivors[i];
-		  if (s.isAlive()) z.attack(s);
+		  if (s.isAlive()){
+                      z.attack(s);
+                      attacked=true;
+                  }
+                  if(!s.isAlive() && attacked){
+                      System.out.println(z.getName() + " killed "+s.getName());
+                  }
 	  }
   }
 
@@ -77,7 +92,6 @@ public class Main {
         if(zombies[i].getClass().getName().toLowerCase().contains("common")) commonZombieCount++;
         if(zombies[i].getClass().getName().toLowerCase().contains("tank")) tankZombieCount++;
     }
-    
     int childCharacterCount = 0;
     int soldierCharacterCount = 0;
     int teacherCharacterCount = 0;
@@ -85,6 +99,11 @@ public class Main {
         if(survivors[i].getClass().getName().toLowerCase().contains("child")) childCharacterCount++;
         if(survivors[i].getClass().getName().toLowerCase().contains("soldier")) soldierCharacterCount++;
         if(survivors[i].getClass().getName().toLowerCase().contains("teacher")) teacherCharacterCount++;
+    }
+    for(int i=0;i<survivors.length;i++){
+        if(survivors[i].getClass().getName().toLowerCase().contains("child")){
+            
+        }
     }
     
 

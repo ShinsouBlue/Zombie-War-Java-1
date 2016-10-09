@@ -24,4 +24,6 @@ public interface ICharacter {
 	 * @return true if still alive.
 	 */
 	public boolean isAlive();
+        public String getName();
+        public void setName(String name);
 }

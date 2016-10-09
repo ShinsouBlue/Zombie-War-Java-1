@@ -32,6 +32,8 @@ public class CharacterFactory implements ICharacterFactory{
       case "common"   : return new Common(30);
       case "teacher"  : return new Teacher(50);
       case "child"    : return new Child(20);
+      case "survivalist" : return new Survivalist(90);
+      case "runner"   : return new Runner(50);
     }
     return null;
   }

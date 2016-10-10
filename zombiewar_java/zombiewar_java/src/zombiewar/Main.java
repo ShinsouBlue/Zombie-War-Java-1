@@ -15,12 +15,13 @@ public class Main {
     int numZombies = (int) (Math.random() * 10);
     IZombie[] zombies = new IZombie[numZombies];
     for (int i = 0; i < zombies.length; i++) {
-      int zombieType = (int) (Math.random() * 4);
+      int zombieType = (int) (Math.random() * 5);
       switch(zombieType){
         case 0: zombies[i] = (IZombie) factory.make("common"); break;
         case 1: zombies[i] = (IZombie) factory.make("tank"); break;
-        case 2: zombies[i] = (IZombie) factory.make("runner");break;
-        case 3: zombies[i] = (IZombie) factory.make("stalker");break;
+        case 2: zombies[i] = (IZombie) factory.make("runner"); break;
+        case 3: zombies[i] = (IZombie) factory.make("stalker"); break;
+        case 4: zombies[i] = (IZombie) factory.make("zombiedog"); break;
       }
     }
     return zombies;
@@ -30,13 +31,14 @@ public class Main {
     int numZombies = (int) (Math.random() * 20);
     ISurvivor[] survivors = new ISurvivor[numZombies];
     for (int i = 0; i < survivors.length; i++) {
-      int type = (int) (Math.random() * 5);
+      int type = (int) (Math.random() * 6);
       switch(type){
         case 0: survivors[i] = (ISurvivor) factory.make("soldier"); break;
         case 1: survivors[i] = (ISurvivor) factory.make("teacher"); break;
         case 2: survivors[i] = (ISurvivor) factory.make("child"); break;
-        case 3: survivors[i] = (ISurvivor) factory.make("survivalist");break;
-        case 4: survivors[i] = (ISurvivor) factory.make("hero");break;
+        case 3: survivors[i] = (ISurvivor) factory.make("survivalist"); break;
+        case 4: survivors[i] = (ISurvivor) factory.make("hero"); break;
+        case 5: survivors[i] = (ISurvivor) factory.make("dog"); break;
       }
     }
     return survivors;
@@ -90,23 +92,27 @@ public class Main {
     int tankZombieCount = 0;
     int runnerZombieCount=0;
     int stalkerZombieCount=0;
+    int dogZombieCount=0;
     for(int i = 0; i < zombies.length; i++){
         if(zombies[i].getClass().getName().toLowerCase().contains("common")) commonZombieCount++;
         if(zombies[i].getClass().getName().toLowerCase().contains("tank")) tankZombieCount++;
         if(zombies[i].getClass().getName().toLowerCase().contains("runner")) runnerZombieCount++;
         if(zombies[i].getClass().getName().toLowerCase().contains("stalker")) stalkerZombieCount++;
+        if(zombies[i].getClass().getName().toLowerCase().contains("zombiedog")) dogZombieCount++;
     }
     int childCharacterCount = 0;
     int soldierCharacterCount = 0;
     int teacherCharacterCount = 0;
     int survivalistCharacterCount = 0;
     int heroCharacterCount=0;
+    int dogCharacterCount=0;
     for(int i = 0; i < survivors.length; i++){
         if(survivors[i].getClass().getName().toLowerCase().contains("child")) childCharacterCount++;
         if(survivors[i].getClass().getName().toLowerCase().contains("soldier")) soldierCharacterCount++;
         if(survivors[i].getClass().getName().toLowerCase().contains("teacher")) teacherCharacterCount++;
         if(survivors[i].getClass().getName().toLowerCase().contains("survivalist")) survivalistCharacterCount++;
         if(survivors[i].getClass().getName().toLowerCase().contains("hero")) heroCharacterCount++;
+        if(survivors[i].getClass().getName().toLowerCase().contains("dog")) dogCharacterCount++;
     }
     for(int i=0;i<survivors.length;i++){
         if(survivors[i].getClass().getName().toLowerCase().contains("child")){
@@ -115,13 +121,13 @@ public class Main {
     }
     
 
-    System.out.println("We have " + survivors.length + " survivors trying to make it to safety. (" + childCharacterCount + " Children, " + soldierCharacterCount + " Soldiers, " + teacherCharacterCount + " Teachers," + survivalistCharacterCount+" Survivalists, "+ heroCharacterCount + " Heroes)");
-    System.out.println("But there are " + zombies.length + " zombies waiting for them.(" + commonZombieCount + " Common Infected, " + tankZombieCount + " Tanks, " + runnerZombieCount + " Runners, "+stalkerZombieCount+ " Stalkers)");
+    System.out.println("We have " + survivors.length + " survivors trying to make it to safety. (" + childCharacterCount + " Children, " + soldierCharacterCount + " Soldiers, " + teacherCharacterCount + " Teachers, " + survivalistCharacterCount+" Survivalists, "+ heroCharacterCount + " Heroes, " + dogCharacterCount + " Dogs)");
+    System.out.println("But there are " + zombies.length + " zombies waiting for them.(" + commonZombieCount + " Common Infected, " + tankZombieCount + " Tanks, " + runnerZombieCount + " Runners, "+stalkerZombieCount+ " Stalkers, " + dogZombieCount + " Zombie Dogs)");
     
-    //TODO: the survivors attack first.  One characte attack each zombie.
+    //TODO: the survivors attack first.  One character attack each zombie.
     //      When all the survivors have done attacking, it's the zombies' 
     //      turn to attack.  For each zombie that is still alive, attack
-    //      each suvivor that is still alive.  Repeat this cycle until
+    //      each survivor that is still alive.  Repeat this cycle until
     //      all the zombies are all dead or all the survivors are all dead.
     boolean battle=true;
     while (battle=true){

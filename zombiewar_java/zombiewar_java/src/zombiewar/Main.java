@@ -7,10 +7,6 @@ import zombiewar.intf.ICharacterFactory;
 import zombiewar.intf.ISurvivor;
 import zombiewar.intf.IZombie;
 
-/**
- *
- * @author thaoc
- */
 public class Main {
   
   private static final ICharacterFactory factory = CharacterFactory.instance;

@@ -7,10 +7,7 @@ import zombiewar.intf.ICharacterFactory;
 import zombiewar.intf.ISurvivor;
 import zombiewar.intf.IZombie;
 
-/**
- *
- * @author thaoc
- */
+
 public class Main {
   
   private static final ICharacterFactory factory = CharacterFactory.instance;
@@ -19,11 +16,12 @@ public class Main {
     int numZombies = (int) (Math.random() * 10);
     IZombie[] zombies = new IZombie[numZombies];
     for (int i = 0; i < zombies.length; i++) {
-      int zombieType = (int) (Math.random() * 3);
+      int zombieType = (int) (Math.random() * 4);
       switch(zombieType){
         case 0: zombies[i] = (IZombie) factory.make("common"); break;
         case 1: zombies[i] = (IZombie) factory.make("tank"); break;
         case 2: zombies[i] = (IZombie) factory.make("runner");break;
+	case 3: zombies[i] = (IZombie) factory.make("stalker");break;
       }
     }
     return zombies;
@@ -33,12 +31,13 @@ public class Main {
     int numZombies = (int) (Math.random() * 20);
     ISurvivor[] survivors = new ISurvivor[numZombies];
     for (int i = 0; i < survivors.length; i++) {
-      int type = (int) (Math.random() * 4);
+      int type = (int) (Math.random() * 5);
       switch(type){
         case 0: survivors[i] = (ISurvivor) factory.make("soldier"); break;
         case 1: survivors[i] = (ISurvivor) factory.make("teacher"); break;
         case 2: survivors[i] = (ISurvivor) factory.make("child"); break;
         case 3: survivors[i] = (ISurvivor) factory.make("survivalist");break;
+	case 4: survivors[i] = (ISurvivor) factory.make("hero");break;	      
       }
     }
     return survivors;
@@ -91,20 +90,24 @@ public class Main {
     int commonZombieCount = 0;
     int tankZombieCount = 0;
     int runnerZombieCount=0;
+    int stalkerZombieCount = 0;
     for(int i = 0; i < zombies.length; i++){
         if(zombies[i].getClass().getName().toLowerCase().contains("common")) commonZombieCount++;
         if(zombies[i].getClass().getName().toLowerCase().contains("tank")) tankZombieCount++;
         if(zombies[i].getClass().getName().toLowerCase().contains("runner")) runnerZombieCount++;
+	if(zombies[i].getClass().getName().toLowerCase().contains("stalker")) stalkerZombieCount++;
     }
     int childCharacterCount = 0;
     int soldierCharacterCount = 0;
     int teacherCharacterCount = 0;
     int survivalistCharacterCount = 0;
+    int heroCharacterCount = 0;	  
     for(int i = 0; i < survivors.length; i++){
         if(survivors[i].getClass().getName().toLowerCase().contains("child")) childCharacterCount++;
         if(survivors[i].getClass().getName().toLowerCase().contains("soldier")) soldierCharacterCount++;
         if(survivors[i].getClass().getName().toLowerCase().contains("teacher")) teacherCharacterCount++;
         if(survivors[i].getClass().getName().toLowerCase().contains("survivalist")) survivalistCharacterCount++;
+	if(survivors[i].getClass().getName().toLowerCase().contains("hero")) heroCharacterCount++;    
     }
     for(int i=0;i<survivors.length;i++){
         if(survivors[i].getClass().getName().toLowerCase().contains("child")){

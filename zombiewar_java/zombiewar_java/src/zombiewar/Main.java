@@ -8,7 +8,7 @@ import zombiewar.intf.ISurvivor;
 import zombiewar.intf.IZombie;
 
 public class Main {
-  
+  //main
   private static final ICharacterFactory factory = CharacterFactory.instance;
   
   public static IZombie[] randomZombies() {
